@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Post</title>
+</head>
+<body>
+
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h1>New Post</h1>
+{% if error %}
+    {{error }}
+<br />
+<br />
+
+{% endif %}
+
+
+<form action="{% url 'posts:create' %}" method="POST">
+    {% csrf_token %}
+    Title:
+    <br/>
+    <input type = "text" name = "title"/>
+    <br/>
+    URL:
+    <br/>
+    <input type = "text" name = "url"/>
+    <br/>
+    <br/>
+
+    <input type = "submit" value="Post" class="btn btn-primary">
+
+
+
+</form>
+
+{% endblock %}
+
+</body>
+</html>

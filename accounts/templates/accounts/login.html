@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h1>Login</h1>
+{% if error %}
+    {{error }}
+<br />
+<br />
+
+{% endif %}
+
+
+<form action="{% url 'accounts:login' %}" method="POST">
+    {% csrf_token %}
+    {% if request.GET.next %}
+        <input type = "hidden" name = "next" value={{ request.GET.next }} />
+    {% endif %}
+    Username
+    <br/>
+    <input type = "text" name = "username"/>
+    <br/>
+    Password
+    <br/>
+    <input type = "password" name = "password"/>
+    <br/>
+    <br/>
+
+
+    <input type = "submit" value="Login" class="btn btn-primary">
+
+
+
+</form>
+
+{% endblock %}
+
+</body>
+</html>
